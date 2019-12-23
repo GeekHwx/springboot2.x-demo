@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>文件上传</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script type="text/javascript" th:src="@{/js/jquery/jquery-3.2.1.min.js}"></script>
+    <style>
+        fieldset{
+            width: 350px;
+            height: auto;
+            float: left;
+            margin-left: 20px;
+        }
+        .submitBtn{
+            background-color: deepskyblue;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<fieldset>
+    <legend>单个文件上传</legend>
+    <p>
+    <form action="/file/uploadASingleFile" method="post" enctype="multipart/form-data">
+    文件1：<input type="file" name="file"/>
+        <input type="submit" class="submitBtn" value="提交"/>
+    </form>
+    </p>
+</fieldset>
+
+<fieldset>
+    <legend>多个文件上传</legend>
+    <p>
+    <form action="/file/uploadMultipleFiles" method="post" enctype="multipart/form-data">
+        文件1：<input type="file" name="file"/><br/>
+        文件2：<input type="file" name="file"/><br/>
+        文件3：<input type="file" name="file"/><br/>
+        <input type="submit" class="submitBtn" value="提交"/>
+    </form>
+    </p>
+</fieldset>
+
+<fieldset>
+    <legend>ajax文件上传</legend>
+    <p>
+        姓名：<input type="text" id="userName" value="" /><br/>
+        文件1：<input type="file" name="file1" multiple id="f1"/><br/>
+        <input id="okBtn" class="submitBtn" type="button" value="提交"/>
+    </p>
+</fieldset>
+
+</body>
+<script>
+    $(function () {
+
+        $("#okBtn").click(function () {
+            var formData = new FormData();
+            formData.append('file', $('#f1')[0].files[0]);
+            formData.append('username', $("#userName").val());
+
+            $.ajax({
+                url:'/file/uploadFileByAjax',
+                type:'POST',
+                data:formData,
+                contentType: false, //不设置内容类型
+                processData: false, //不处理数据
+                success:function(data){
+                    console.log(data);
+                },
+                error:function(){
+                    alert("上传失败！");
+                }
+            });
+
+        });
+    });
+</script>
+</html>
