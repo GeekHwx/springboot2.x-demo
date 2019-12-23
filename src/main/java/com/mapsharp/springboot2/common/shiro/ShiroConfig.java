@@ -43,7 +43,6 @@ public class ShiroConfig {
 	 * loginUrl 		未登录的请求自动跳转到登录页面，不是必须的属性，不输入地址的话会自动寻找项目web项目的根目录下的”/login.jsp”页面,可自定义登录页的路径
 	 * successUrl		登录成功默认跳转页面，不配置则跳转至”/”。如果登陆前点击的一个需要登录的页面，则在登录自动跳转到那个需要登录的页面。不跳转到此
 	 * unauthorizedUrl	没有权限默认跳转的页面
-	 *
 	 * @param securityManager
 	 * @return
 	 */
