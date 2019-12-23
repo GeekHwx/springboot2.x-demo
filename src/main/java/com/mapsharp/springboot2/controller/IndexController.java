@@ -38,8 +38,7 @@ public class IndexController {
 	 * @return:
 	 */
 	@RequestMapping("/403")
-	public String unauthorizedRole(Integer code) {
-		System.out.println("code:"+code);
+	public String unauthorizedRole() {
 		return "error/403";
 	}
 
