@@ -32,7 +32,7 @@ public class ShiroConfig {
 	}
 
 	/**
-	 * 配置核心安全事务管理器
+	 * 配置会话管理器
 	 *
 	 * @return
 	 */
